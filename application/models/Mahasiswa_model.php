@@ -18,6 +18,7 @@ class Mahasiswa_model extends CI_Model
     {
         $keyword = $kata["keyword"];
         $this->db->like("nama",$keyword);
+        $this->db->or_like("jurusan",$keyword);
         $res = $this->db->get("mahasiswa");
         // var_dump($res->result_array());
         return $res->result_array();
@@ -32,6 +33,31 @@ class Mahasiswa_model extends CI_Model
             "jurusan" => $this->input->post('jurusan',true)
         ];
         $this->db->insert('mahasiswa', $data);
+    }
+
+    public function generateData()
+    {
+        for ($i=0; $i < 100; $i++) {
+            $data = [
+                "nama" => "Bimantara $i",
+                "nrp" => "31116$i",
+                "email" => "bimantara$i@gmail.com",
+                "jurusan" => "Teknik Informatika"
+            ];
+            $this->db->insert('mahasiswa', $data);
+        }
+    }
+
+    public function ubahDataMahasiswa()
+    {
+        $data = [
+            "nama" => $this->input->post('nama',true),
+            "nrp" => $this->input->post('nrp',true),
+            "email" => $this->input->post('email',true),
+            "jurusan" => $this->input->post('jurusan',true)
+        ];
+        $this->db->where('id',$this->input->post('id'));
+        $this->db->update('mahasiswa', $data);
     }
 
     public function hapusDataMahasiswa($id)

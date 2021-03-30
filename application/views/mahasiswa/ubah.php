@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <a href="<?= base_url('mahasiswa'); ?>" class="card-link">Kembali</a>
 
-                        <h5 class="card-title">Tambah Data Mahasiswa</h5>
+                        <h5 class="card-title">Ubah Data Mahasiswa</h5>
                     </div>
                     <div class="card-body">
                         <!-- <?php if (validation_errors()) : ?>
@@ -18,33 +18,41 @@
                         <?php endif;?> -->
 
 
-                        <input type="number" name="id" id="id" hidden>
+                        <input type="number" name="id" id="id" value="<?= $mahasiswa['id']; ?>" hidden>
                         <div class="form-group">
                             <label for="nama">Nama</label>
-                            <input type="text" class="form-control" id="nama" name="nama">
+                            <input type="text" class="form-control" id="nama" name="nama"
+                                value="<?= $mahasiswa["nama"]; ?>">
                             <small class="form-text text-danger"><?= form_error('nama'); ?></small>
                         </div>
                         <div class="form-group">
                             <label for="nrp">NRP</label>
-                            <input type="number" class="form-control" id="nrp" name="nrp">
+                            <input type="number" class="form-control" id="nrp" name="nrp"
+                                value="<?= $mahasiswa["nrp"]; ?>">
                             <small class="form-text text-danger"><?= form_error('nrp'); ?></small>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
+                            <input type="email" class="form-control" id="email" name="email"
+                                value="<?= $mahasiswa["email"]; ?>">
                             <small class="form-text text-danger"><?= form_error('email'); ?></small>
                         </div>
                         <div class="form-group">
                             <label for="jurusan">Jurusan</label>
                             <select class="form-control" id="jurusan" name="jurusan">
-                                <option value="Teknik Informatika">Teknik Informatika</option>
-                                <option value="Akutansi">Akutansi</option>
+                                <?php foreach ($jurusan as $j) : ?>
+                                <?php if ($j == $mahasiswa["jurusan"]): ?>
+                                <option value="<?= $j; ?>" selected><?= $j; ?></option>
+                                <?php else:?>
+                                <option value="<?= $j; ?>"><?= $j; ?></option>
+                                <?php endif;?>
+                                <?php endforeach;?>
                             </select>
                         </div>
 
                     </div>
                     <div class="card-footer text-center">
-                        <button type="submit" class="btn btn-primary right">Tambah Data</button>
+                        <button type="submit" class="btn btn-primary right">Ubah Data</button>
                     </div>
                 </form>
             </div>
