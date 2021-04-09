@@ -1,6 +1,6 @@
 <div class="container">
     <?php if ($this->session->flashdata('mahasiswa')) :?>
-    <div class="row mt-3">
+    <!-- <div class="row mt-3">
         <div class="col-lg-6">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 Data mahasiswa <strong>berhasil</strong> <?= $this->session->flashdata('mahasiswa'); ?>
@@ -8,7 +8,8 @@
                         aria-hidden="true">&times;</span></button>
             </div>
         </div>
-    </div>
+    </div> -->
+    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('mahasiswa'); ?>"></div>
     <?php endif;?>
     <!-- <?= var_dump($this->session->flashdata()); ?>
     <?= var_dump($this->session->userdata()); ?> -->
@@ -23,7 +24,8 @@
         <div class="col-lg-6">
             <form action="" method="post">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari Mahasiswa" name="keyword" autocomplete="off">
+                    <input type="text" class="form-control" placeholder="Cari Mahasiswa" name="keyword"
+                        autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">cari</button>
                     </div>
@@ -46,10 +48,15 @@
                         <a class="badge badge-primary"
                             href="<?= base_url('mahasiswa/detail/'); ?><?= $mhs['id']; ?>">Detail</a>
                         <a class="badge badge-warning"
-                            href="<?= base_url('mahasiswa/ubah/'); ?><?= $mhs['id']; ?>" >Ubah</a>
-                        <a class="badge badge-danger"
+                            href="<?= base_url('mahasiswa/ubah/'); ?><?= $mhs['id']; ?>">Ubah</a>
+                        <a class="badge badge-danger tombol-hapus" href="<?= base_url('mahasiswa/hapus/'); ?><?= $mhs['id']; ?>">
+                            Hapus
+                        </a>
+                        <!-- <a class="badge badge-danger"
                             onclick="return confirm('yakin menghapus data dengan nama (<?= strtoupper($mhs['nama']); ?>)?');"
-                            href="<?= base_url('mahasiswa/hapus/'); ?><?= $mhs['id']; ?>">Hapus</a>
+                            href="<?= base_url('mahasiswa/hapus/'); ?><?= $mhs['id']; ?>">
+                            Hapus
+                        </a> -->
                     </div>
                 </li>
                 <?php endforeach; ?>

@@ -27,6 +27,7 @@
                     <a class="nav-item nav-link" href="<?= base_url(); ?>">Home</a>
                     <a class="nav-item nav-link" href="<?= base_url("mahasiswa"); ?>">Mahasiswa</a>
                     <a class="nav-item nav-link" href="<?= base_url("about"); ?>">About</a>
+                    <a class="nav-item nav-link" href="<?= base_url("pagination"); ?>">Pagination</a>
                 </div>
             </div>
         </div>
